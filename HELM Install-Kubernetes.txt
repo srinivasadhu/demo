@@ -1,0 +1,133 @@
+HELM
+
+Install HELM binary to your PC/server
+---------------------------------------
+HELM_TAR_FILE=helm-v2.9.1-linux-amd64.tar.gz
+HELM_URL=https://storage.googleapis.com/kubernetes-helm
+HELM_BIN=helm
+ 
+function install_helm {
+ 
+    if [ -z $(which $HELM_BIN) ]
+       then
+           wget ${HELM_URL}/${HELM_TAR_FILE}
+           tar -xvzf ${HELM_TAR_FILE}
+           chmod +x linux-amd64/${HELM_BIN}
+           sudo cp linux-amd64/${HELM_BIN} /usr/local/bin/${HELM_BIN}
+           rm -rf ${HELM_TAR_FILE} linux-amd64
+           echo -e "\nwhich ${HELM_BIN}"
+           which ${HELM_BIN}
+    else
+       echo "Helm is most likely installed"
+    fi
+ 
+}
+
+
+Setup tiller user account in your Kubernetes cluster in AWS
+-----------------------------------------------------------
+kubectl create serviceaccount --namespace kube-system tiller
+kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+# kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+helm init --service-account tiller --upgrade
+
+
+You can learn more about HELM at this web page
+--------------------------------------------
+https://docs.helm.sh/
+
+
+
+kubectl get pods -n kube-system
+kubectl create serviceaccount --namespace kube-system tiller
+helm init --service-account tiller --upgrade
+kubectl get pods -n kube-system | grep tiller --color
+kubectl get pods -n kube-system
+helm list
+helm list -a
+
+Run GOGS helm deployment for the first time
+--------------------------------------------
+# helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
+helm install --name <some_name> --values <values_you_edited>.yaml incubator/gogs
+
+CentOS: yum install nginx
+Ubuntu: apt-get install nginx
+K8s: helm install stable/<nginx>
+helm install --name udemy --values values.yaml incubator/gogs
+kubectl get pods,svc
+gos port-->32659
+---------
+How to create local file/directory structure for GOGS installation from local files
+ssh username@your_server
+ 
+# this will clone all the HELM charts
+username@your_server:~$ git clone https://github.com/helm/charts.git
+ 
+username@your_server:~$ ls charts/
+code-of-conduct.md  incubator  OWNERS        README.md             stable
+CONTRIBUTING.md     LICENSE    PROCESSES.md  REVIEW_GUIDELINES.md  test
+ 
+# create some folder
+username@your_server:~$ mkdir local_installation
+username@your_server:~$ cd local_installation
+ 
+# copy gogs/ folder from charts/ folder you have cloned from github.com
+username@your_server:~/local_installation$ rsync -avhx ../charts/incubator/gogs .
+username@your_server:~/local_installation$ ls
+gogs
+ 
+# create an empty folder called charts/ inside your gogs/ folder
+username@your_server:~/local_installation$ mkdir charts; cd charts
+ 
+username@your_server:~/local_installation/gogs/charts$ rsync -avhx ../../../charts/stable/postgresql .
+ 
+ 
+# final structure 
+ 
+username@your_server:~/local_installation/gogs/charts$ cd ..
+username@your_server:~/local_installation/gogs$ tree -L 2
+ 
+username@your_server:~/local_installation/gogs$ tree -L 2
+.
+├── charts
+│   └── postgresql
+├── Chart.yaml
+├── README.md
+├── requirements.lock
+├── requirements.yaml
+├── templates
+│   ├── configmap-tcp.yaml
+│   ├── configmap.yaml
+│   ├── deployment.yaml
+│   ├── _helpers.tpl
+│   ├── ingress.yaml
+│   ├── NOTES.txt
+│   ├── pvc.yaml
+│   ├── secrets.yaml
+│   └── service.yaml
+└── values.yaml
+------------------------------------
+commands ---> ll , ll charts    
+------------------------------------
+kubectl get pvc  (persistent volume cliam)
+helm delete pv pvc-andsjjjdfjeg
+--------------------------------
+kubectl config view
+                              set num ---> command that assaigns number in script
+helmfile -f jenkins_udemy_helmfile.yaml sync
+---------------------------------------
+How to retrieve public IP addresses of our Kubernete cluster from cmd
+
+aws ec2 describe-instances \
+  --query "Reservations[*].Instances[*].PublicIpAddress" \
+  --output=text
+ 
+Simple Jenkins job shell script:
+
+HELM_CHARTS=$(ls -al stable | wc -l)
+echo -e "You have just cloned ${HELM_CHARTS} number of HELM CHARTS from github.com"
+------------------------------------------
+kubectl get ns
+kubectl get pods -n promotheus
+kubectl describe pod promithes-affjweiocveveohvohr -n promotheus

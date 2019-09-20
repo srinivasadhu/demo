@@ -1,10 +1,7 @@
 Build and push Docker custom image
 
 Docker is configured on your machine
-______________
-TESTING 
-TESTING
-___________________
+
 touch index.html
 ls
 create custom docker image
