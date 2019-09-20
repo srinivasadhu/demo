@@ -1,0 +1,30 @@
+https://kubernetes.io/docs/concepts/cluster-administration/networking/
+
+https://kubernetes.io/docs/tasks/administer-cluster/access-cluster-services/
+
+
+
+
+
+https://cloudfoundation-my.sharepoint.com/:f:/g/personal/support_cloudfoundation_onmicrosoft_com/EppOe148wMVAqUi-DrZUmZgBxjrqmlCIx2kbRJ6SY2UeIg?e=d2pK9G
+
+
+https://www.youtube.com/watch?v=mPrUcWN946Q
+
+Storage Queue topic Pending
+
+
+pass- mysharepointadmin@1
+
+
+--------------------
+username
+password
+sudo su
+yum install httpd
+systemctl start httpd
+yum install java -y
+----------------------
+
+MARKLOGIC ON AZURE / AWS
+https://www.youtube.com/watch?v=gp3wNR85bX8

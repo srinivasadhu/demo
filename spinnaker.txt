@@ -1,1 +1,0 @@
-https://www.spinnaker.io/guides/user/kubernetes-v2/deploy-helm/

@@ -1,0 +1,26 @@
+Build and push Docker custom image
+
+Docker is configured on your machine
+
+touch index.html
+ls
+create custom docker image
+vi Dockerfile
+FROM nginx:alpine
+COPY . usr/share/nginx/html
+docker build -t magicalnginx:latest
+docker images
+Build custome Docker image
+docker build -t <image_name>:<tag><path>
+docker build -t magicalNginx
+docker run -d --name alpinengix -p 8081:80 nigix
+docker ps
+push image to docker hub
+docker tag<image_id><account_name>/<image_name>
+do docker hub login
+docekr login --username=<username> --email=<useremail>
+docker login --username=srinivas9866@gmail.com
+push Docker Image
+docker push <account_name>/<image_name>
+docker push anshudevops/magicalnginx
+--> Run Built Custom Image on Kubernetes
