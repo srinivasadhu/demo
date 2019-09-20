@@ -1,0 +1,119 @@
+pod.yml
+-------
+apiVersion: v1
+kind: pod
+metadata:
+  name: hello-pod
+spec:
+  containers:
+    - name: first-container
+      image: nginx
+      ports:
+      - containerPort: 80
+
+go into master- create dir -manifests -  vi file pod.yml--paste pod
+kubectl apply -f pod.yml  #
+kubectl get nodes      #
+kubectl get pods -o wide   #more info
+kubectl apply -f  --> -f for path of file -->same to all
+kubectl get svc, nodes, pods
+kubectl delete -f pod.yml
+kubectl get pods --all-namespaces --> for more info u add (-o wide)
+kubeproxy pod is system pod- network pod
+kubectl apply -f pod.yml
+kubectl get pods  --> pod has ip addr--> this pod executing on 
+cp pod.yml mypod.yml
+now change pod to httd --> kubectl apply -f mypod.yml
+docker what doing --> sudo usermod -aG docker ubuntu
+images are not download on master that will be on nodes
+kubeproxy for enabling network, what is greay area, how can i write yaml files --> nodejs JAva deployment two version 
+2 container, 2 version, 2 services --> open source java but in company real appl
+1 vm 2 nodes , kubernetes worried pod is ruuning or not , but not worry about images downloaded.
+create pods on multimachines
+where replication controller, midd, data--> 
+----------
+student yml file -it is used represent data like json, any keyvalue pair
+name: Test
+mobile: 9999999
+feepaid: yes 
+courses:
+   - Devops
+   - Azure
+   - GCP
+Address:    whenever we can not tell is complex stuff, {} currly braces for separating 
+   Aparmetnt/Building: 202
+   Street-1: jsfkldjjafoew
+   street-2: cjsdafljsda
+   city:  hyderbad
+     
+ Institute.yml
+software: 
+  - name: QT
+    courses:
+       - AWS
+       - Azure
+    branches:
+       - Neelagirio 439i
+       - safjldsjf  094903
+       - SR nagar r43
+   - name: IIT
+  yoga:
+    - name: 
+------------------
+
+kubectl yml jos -kubeapi manager (json)
+
+-------------------------------
+apiVersion: v1
+kind: pod
+metadata:
+  name: hello-pod
+spec: 
+  containers:
+    - name: first-container
+      image: nginx
+      ports:
+      -  containerPort:80
+---------------------------------
+master
+kubectl get nodes
+node
+kubectl get nodes
+
+
+
+
+
+
+  	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
