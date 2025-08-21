@@ -1,0 +1,13 @@
+version: 0.2
+env:
+  variables:
+    ENVIRONMENT: "dev"
+phases:
+  build:
+    commands:
+      - echo "== SAM deploy =="
+      - sam deploy --config-env $ENVIRONMENT
+artifacts:
+  files:
+    - samTemplate.yaml
+  discard-paths: yes
