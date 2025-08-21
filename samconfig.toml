@@ -1,0 +1,11 @@
+version = 0.1
+
+[default.deploy.parameters]
+capabilities = "CAPABILITY_IAM CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND"
+resolve_s3 = true
+no_fail_on_empty_changeset = true
+confirm_changeset = false
+
+[dev.deploy.parameters]
+stack_name = "simple-hello-app-stack"
+region = "eu-north-1"
