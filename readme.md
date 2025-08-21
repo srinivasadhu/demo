@@ -1,3 +1,36 @@
+
+# Simple Hello App – Serverless CI/CD Demo
+
+## Problem
+On-prem workloads are costly and inflexible for apps with low usage but sudden spikes.
+
+## Solution
+Migrate to AWS Lambda + API Gateway using **AWS SAM**.  
+Automate CI/CD using **CodePipeline + CodeBuild** with:
+- Security scans (Bandit, cfn-lint, pip-audit)
+- Unit tests
+- `sam build` for packaging
+- Manual approval before production
+- `sam deploy` for deployment
+
+## CI/CD Flow
+1. **Source** – GitHub (this repo)
+2. **Build** – CodeBuild using `buildspec.yaml`
+3. **Approval** – Manual approval step
+4. **Deploy** – CodeBuild using `buildspec-deploy.yml`
+
+## Commands for Local Testing
+```sh
+sam build
+sam local invoke
+sam deploy --guided
+
+
+====================================================
+
+
+
+
 # AWS DevOps CI/CD Checkride – Step‑by‑Step Guide (with Code & Rationale)
 
 This document is a clear, end‑to‑end walkthrough you can use for a **checkride/demo**. It includes the **what**, **why**, and **how**, plus the **exact code** and **UI clicks**. The scenario: a simple Python AWS Lambda function deployed via **CodePipeline → CodeBuild → CloudFormation/SAM**, with GitHub as the source.
