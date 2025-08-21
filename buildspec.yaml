@@ -1,0 +1,34 @@
+version: 0.2
+
+env:
+  variables:
+    ENVIRONMENT: "dev"
+    PYTEST_DIR: "tests"
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.10
+    commands:
+      - pip install --upgrade pip
+      - pip install bandit pip-audit cfn-lint pytest
+      - pip install -r sample-hello-lambda-code/requirements.txt -t sample-hello-lambda-code/ || true
+  pre_build:
+    commands:
+      - echo "== Security checks =="
+      - bandit -q -r sample-hello-lambda-code || { echo "Bandit issues"; exit 1; }
+      - cfn-lint samTemplate.yaml
+      - echo "== Dependency audit =="
+      - pip-audit || true
+      - echo "== Unit tests =="
+      - if [ -d "$PYTEST_DIR" ]; then pytest -q; else echo "No tests dir"; fi
+  build:
+    commands:
+      - echo "== SAM build =="
+      - sam build
+artifacts:
+  files:
+    - samTemplate.yaml
+    - samconfig.toml
+    - .aws-sam/**/*
+  discard-paths: no
