@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Simple Hello Lambda – Serverless demo
+
+Resources:
+  sampleHelloApp:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: sample-hello-app
+      Handler: lambda_handler.lambda_handler
+      Runtime: python3.10
+      CodeUri: sample-hello-lambda-code/
+      MemorySize: 1024
+      Timeout: 10
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Events:
+        GetHello:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: GET
