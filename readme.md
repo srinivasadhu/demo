@@ -26,6 +26,24 @@ sam local invoke
 sam deploy --guided
 
 
+- REPOSITORY LAYOUT
+
+
+simple-hello-app/
+├─ sample-hello-lambda-code/
+│  ├─ lambda_handler.py
+│  ├─ requirements.txt
+├─ buildspec.yaml              # Build stage
+├─ buildspec-deploy.yml        # Deploy stage
+├─ samTemplate.yaml            # SAM template
+├─ samconfig.toml              # SAM config
+├─ readme.md
+└─ tests/                      # (Optional, add later)
+   └─ test_basic.py
+
+
+
+
 ====================================================
 
 
