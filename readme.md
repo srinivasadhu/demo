@@ -281,3 +281,6 @@ If you want to provision the CI/CD infra itself via CloudFormation later, you ca
 ---
 
 **That’s your checkride script and reference.** Open this doc during the session and follow Sections 7–8 verbatim; keep Appendix C handy for questions.
+
+*********
+
